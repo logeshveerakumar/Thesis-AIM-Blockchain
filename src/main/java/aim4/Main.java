@@ -65,7 +65,7 @@ public class Main {
 //    Runtime.getRuntime().exec("testrpc -a 100");  
 //    System.out.println("Killing previous instance of testrpc");
 //    sleep(4000);  //wait for testrpc init
-    VehicleEnvironment.blockchain=false;
+    VehicleEnvironment.blockchain=true;
     if(VehicleEnvironment.blockchain)
         NodeJS.runNodeJSMethod("nodefile.js","compile");
 //    System.out.println("Waiting before testing");

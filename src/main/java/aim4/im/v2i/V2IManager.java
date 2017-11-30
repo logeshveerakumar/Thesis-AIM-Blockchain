@@ -237,11 +237,16 @@ public class V2IManager extends IntersectionManager
         System.err.printf("im %d process message of vin %d: %s\n",
                           getId(), msg.getVin(), msg);
       }
+      
+      
+      long time1=0;
+      long time2=0;
      
         
         
         
         if(VehicleEnvironment.blockchain){
+            time1=System.currentTimeMillis()/1000;
               String temp = ""+msg;
               if(msg.getVin()!=0 && temp.startsWith("Request")){
                     int request_ID = Integer.parseInt(temp.substring(temp.indexOf("requestId")+10,temp.indexOf(",spec")));
@@ -279,9 +284,15 @@ public class V2IManager extends IntersectionManager
                             System.out.println("");
                               Logger.getLogger(V2IManager.class.getName()).log(Level.SEVERE, null, ex);
                           }
+                            time2=System.currentTimeMillis()/1000;
+                            VehicleEnvironment.totalVeh++;
+                            VehicleEnvironment.sumResponseTime=VehicleEnvironment.sumResponseTime+(time2-time1);
+                            VehicleEnvironment.averageResponseTime=VehicleEnvironment.sumResponseTime/VehicleEnvironment.totalVeh;
+                            System.out.println("Average Response Time:"+VehicleEnvironment.averageResponseTime);
+
                     }
               }
-
+        
         }
         
         processV2IMessage(msg);

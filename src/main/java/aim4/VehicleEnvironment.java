@@ -30,7 +30,9 @@ public class VehicleEnvironment {
     public static int totalVehicleCrossed=0;
     public static int totalVehicleVerified=0;
     public static int totalVehicleVerifiedBySensorOnly=0;
-    
+    public static float averageResponseTime=0;
+    public static float sumResponseTime=0;
+    public static int totalVeh=0;
     
     
 //    public static boolean findNeighbours(int vin){
